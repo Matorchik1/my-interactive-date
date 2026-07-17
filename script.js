@@ -385,27 +385,35 @@ function updateMusicByProgress() {
 // Почати
 // =============================
 
-document
-    .getElementById("startButton")
-    .addEventListener("click", async () => {
+const startModal = document.getElementById("startModal");
 
-        try {
+document.getElementById("startButton").addEventListener("click", () => {
 
-            music.volume = 0;
+    startModal.classList.add("show");
 
-            await music.play();
+});
 
-            fadeMusic(.5, 3000);
+document.getElementById("acceptDate").addEventListener("click", async () => {
 
-        } catch (error) {
+    startModal.classList.remove("show");
 
-            console.error(error);
+    try {
 
-        }
+        music.volume = 0;
 
-        showPage("page1", "menuPage");
+        await music.play();
 
-    });
+        fadeMusic(.5, 3000);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+    showPage("page1", "menuPage");
+
+});
 
 
 // =============================
@@ -737,5 +745,21 @@ resetButton.addEventListener("click", () => {
         updateProgress();
     }
 
+
+});
+
+
+const declineDate = document.getElementById("declineDate");
+const toast = document.getElementById("toast");
+
+declineDate.addEventListener("click", () => {
+
+    toast.classList.add("show");
+
+    clearTimeout(toast.timer);
+
+    toast.timer = setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2500);
 
 });
