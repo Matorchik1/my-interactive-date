@@ -1884,3 +1884,104 @@ button:hover {
     transform: scale(1.25) rotate(-8deg);
 }
 
+.poem-modal {
+
+    position: fixed;
+    inset: 0;
+
+    background:
+    rgba(0,0,0,.55);
+
+    backdrop-filter: blur(12px);
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    opacity:0;
+    pointer-events:none;
+
+    transition:.5s;
+
+    z-index:999;
+
+}
+
+
+.poem-modal.show {
+
+    opacity:1;
+    pointer-events:auto;
+
+}
+
+
+
+.poem-window {
+
+    width:min(500px,90%);
+
+    padding:40px;
+
+    border-radius:30px;
+
+    background:
+    rgba(255,255,255,.12);
+
+    border:
+    1px solid rgba(255,255,255,.25);
+
+    box-shadow:
+    0 0 40px rgba(255,100,180,.25);
+
+    text-align:center;
+
+    color:white;
+
+    animation:
+    poemOpen .6s ease;
+
+}
+
+
+
+.poem-window p {
+
+    line-height:1.8;
+
+    margin:20px 0;
+
+}
+
+
+
+#poemButton {
+
+    margin-top:25px;
+
+}
+
+
+@keyframes poemOpen {
+
+    from {
+
+        transform:scale(.8);
+        opacity:0;
+
+    }
+
+    to {
+
+        transform:scale(1);
+        opacity:1;
+
+    }
+
+}
+
+#poemButton.show {
+    display:inline-block;
+    animation: fadeIn .5s ease;
+}
