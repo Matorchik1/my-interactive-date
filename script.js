@@ -177,24 +177,39 @@ function checkSecret() {
 
 }
 
+function playEnding() {
+
+    poemButton.style.display = "none";
+    finishButton.style.display = "none";
+
+    const words = document.querySelector(".floating-words");
+    const text = document.querySelector(".final-text");
+    const heart = document.getElementById("finalHeart");
+
+    words.style.transition = "3s";
+    text.style.transition = "3s";
+
+    words.style.opacity = 0;
+    text.style.opacity = 0;
+
+    setTimeout(() => {
+        heart.classList.add("show");
+    }, 2500);
+
+    setTimeout(() => {
+        heart.style.opacity = 0;
+    }, 7000);
+
+}
+
 const letterText =
     document.getElementById("letterText");
 
 const finalScene =
     document.getElementById("finalScene");
 
-
-let originalText = "";
-
-if (letterText) {
-
-    originalText = letterText.innerHTML;
-
-}
-
-
 const letterParagraphs =
-    document.querySelectorAll("#letterText p");
+    document.querySelectorAll("#letterSource p");
 
 
 function typeLetter() {
@@ -544,11 +559,14 @@ setInterval(createHeart, 250);
 // =============================
 
 const music = document.getElementById("bgMusic");
+const typeSound = document.getElementById("typeSound");
+
+
 const musicButton = document.getElementById("musicButton");
 const equalizer = document.querySelector(".equalizer");
 
 music.volume = 0.15;
-
+typeSound.volume = 0.08;
 
 // =============================
 // Стартовий прогрес
@@ -604,24 +622,41 @@ openLetter.addEventListener("click", () => {
 
     fadeMusic(.08, 3000);
 
-
     secretOverlay.classList.remove("show");
 
+    document.querySelectorAll(".page")
+        .forEach(p => p.classList.remove("active"));
 
-    document.querySelectorAll(".page").forEach(page => {
-        page.classList.remove("active");
-    });
+    const page = document.getElementById("letterPage");
 
+    page.classList.add("active");
 
-    document.getElementById("letterPage").classList.add("active");
-
+    const envelope =
+        document.getElementById("envelope");
 
     setTimeout(() => {
 
+        envelope.classList.add("open");
+
+    }, 700);
+
+    setTimeout(() => {
+
+        document
+            .getElementById("envelopeScene")
+            .style.opacity = 0;
+
+    }, 3500);
+
+    setTimeout(() => {
+
+        document
+            .getElementById("envelopeScene")
+            .style.display = "none";
+
         typeLetter();
 
-    }, 300);
-
+    }, 4300);
 
 });
 
@@ -745,7 +780,12 @@ closePoem.addEventListener("click", () => {
     finalScene.classList.remove("hidden");
     finalScene.classList.add("show");
 
+    poemButton.classList.remove("show");
+    poemButton.classList.add("hidden");
+
     fadeMusic(0.02, 5000);
+
+    setTimeout(playEnding, 9000);
 
 });
 
