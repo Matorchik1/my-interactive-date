@@ -637,9 +637,16 @@ openLetter.addEventListener("click", () => {
 
 const finishButton = document.getElementById("finishButton");
 
+const poemButton = document.getElementById("poemButton");
+const poemModal = document.getElementById("poemModal");
+const closePoem = document.getElementById("closePoem");
+
 
 finishButton.addEventListener("click", () => {
+
+
     fadeMusic(0.05, 3000);
+
 
     finishButton.classList.add("finish-click");
 
@@ -654,7 +661,6 @@ finishButton.addEventListener("click", () => {
 
 
             const heart = document.createElement("div");
-
 
             heart.className = "finish-heart";
 
@@ -685,32 +691,54 @@ finishButton.addEventListener("click", () => {
 
 
             setTimeout(() => {
-
                 heart.remove();
-
             }, 1500);
 
 
         }, i * 30);
 
-
     }
 
 
+
     setTimeout(() => {
+
 
         finishButton.style.display = "none";
 
-    }, 500);
-
-    setTimeout(() => {
 
         document
             .getElementById("finalMessage")
             .classList.add("show");
 
 
-    }, 2200);
+        poemButton.classList.remove("hidden");
+
+        poemButton.classList.add("show");
+
+
+    }, 1000);
+
+
+});
+
+
+
+// Відкрити вірш
+
+poemButton.addEventListener("click", () => {
+
+    poemModal.classList.add("show");
+
+});
+
+
+
+// Закрити вірш
+
+closePoem.addEventListener("click", () => {
+
+    poemModal.classList.remove("show");
 
 });
 
