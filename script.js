@@ -110,23 +110,6 @@ const secretOverlay = document.getElementById("secretOverlay");
 const openLetter = document.getElementById("openLetter");
 
 let secretOpened = false;
-let secretReady = false;
-
-const totalPages = [
-    "aboutPage",
-    "characterPage",
-    "valuesPeoplePage",
-    "principlesPage",
-    "lifePage",
-    "dreamsPage",
-    "joyPage",
-    "tastePage",
-    "stylePage",
-    "carePage",
-    "relationshipPage",
-    "girlPage",
-    "momentsPage"
-];
 
 function updateProgress() {
 
@@ -196,6 +179,9 @@ function checkSecret() {
 
 const letterText =
     document.getElementById("letterText");
+
+const finalScene =
+    document.getElementById("finalScene");
 
 
 let originalText = "";
@@ -274,13 +260,13 @@ function typeLetter() {
 
                     writeParagraph();
 
-                }, 700); // пауза між абзацами
+                }, 500); // пауза між абзацами
 
 
             }
 
 
-        }, 35); // швидкість друку
+        }, 25); // швидкість друку
 
 
     }
@@ -338,26 +324,34 @@ function showPage(currentId, nextId) {
 
 }
 
-function fadeMusic(volume, time) {
+function fadeMusic(targetVolume, time) {
 
-    let step =
-        (volume - music.volume) / 20;
+    clearInterval(fadeMusic.timer);
 
+    targetVolume = Math.max(0, Math.min(1, targetVolume));
 
-    let fade = setInterval(() => {
+    const steps = 30;
 
-        music.volume += step;
+    const step =
+        (targetVolume - music.volume) / steps;
 
+    fadeMusic.timer = setInterval(() => {
 
-        if (
-            Math.abs(music.volume - volume) < 0.01
-        ) {
+        let nextVolume = music.volume + step;
 
-            clearInterval(fade);
+        nextVolume = Math.max(0, Math.min(1, nextVolume));
+
+        music.volume = nextVolume;
+
+        if (Math.abs(music.volume - targetVolume) <= Math.abs(step)) {
+
+            music.volume = targetVolume;
+
+            clearInterval(fadeMusic.timer);
 
         }
 
-    }, time / 20);
+    }, time / steps);
 
 }
 
@@ -641,6 +635,8 @@ const poemButton = document.getElementById("poemButton");
 const poemModal = document.getElementById("poemModal");
 const closePoem = document.getElementById("closePoem");
 
+const finalMessage =
+    document.getElementById("finalMessage");
 
 finishButton.addEventListener("click", () => {
 
@@ -740,6 +736,17 @@ closePoem.addEventListener("click", () => {
 
     poemModal.classList.remove("show");
 
+    poemButton.classList.add("hidden");
+
+    finishButton.classList.add("hidden");
+    finalMessage.classList.add("hidden");
+    letterText.classList.add("hidden");
+
+    finalScene.classList.remove("hidden");
+    finalScene.classList.add("show");
+
+    fadeMusic(0.02, 5000);
+
 });
 
 // =============================
@@ -791,3 +798,4 @@ declineDate.addEventListener("click", () => {
     }, 2500);
 
 });
+
