@@ -348,8 +348,6 @@ button:hover {
 }
 
 .cards {
-
-    display: flex;
     gap: 25px;
 
     margin: 40px 0;
@@ -887,16 +885,6 @@ button:hover {
 
 }
 
-.letter-text p {
-
-    opacity: 0;
-
-    transform: translateY(25px);
-
-    animation: fadeLetter .8s forwards;
-
-}
-
 .letter-text p:nth-child(1) {
     animation-delay: .3s;
 }
@@ -913,16 +901,6 @@ button:hover {
     animation-delay: 1.8s;
 }
 
-@keyframes fadeLetter {
-
-    to {
-
-        opacity: 1;
-        transform: none;
-
-    }
-
-}
 
 .secret-overlay {
 
@@ -1549,12 +1527,6 @@ button:hover {
 
 }
 
-.hidden {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateY(20px);
-}
-
 #finishButton {
     transition: .8s ease;
 }
@@ -1569,7 +1541,7 @@ button:hover {
    Модальне вікно
 =========================== */
 
-.start-modal{
+.start-modal {
 
     position: fixed;
     inset: 0;
@@ -1578,7 +1550,7 @@ button:hover {
     justify-content: center;
     align-items: center;
 
-    background: rgba(10,10,20,.72);
+    background: rgba(10, 10, 20, .72);
     backdrop-filter: blur(12px);
 
     opacity: 0;
@@ -1592,7 +1564,7 @@ button:hover {
 
 }
 
-.start-modal.show{
+.start-modal.show {
 
     opacity: 1;
     visibility: visible;
@@ -1605,56 +1577,55 @@ button:hover {
    Вікно
 =========================== */
 
-.start-window{
+.start-window {
 
-    width: min(500px,92vw);
+    width: min(500px, 92vw);
 
     padding: 40px;
 
     border-radius: 28px;
 
     background:
-        linear-gradient(
-        180deg,
-        rgba(255,255,255,.15),
-        rgba(255,255,255,.05));
+        linear-gradient(180deg,
+            rgba(255, 255, 255, .15),
+            rgba(255, 255, 255, .05));
 
-    border:1px solid rgba(255,255,255,.12);
+    border: 1px solid rgba(255, 255, 255, .12);
 
     backdrop-filter: blur(30px);
 
     box-shadow:
-        0 30px 80px rgba(0,0,0,.45);
+        0 30px 80px rgba(0, 0, 0, .45);
 
-    text-align:center;
+    text-align: center;
 
-    transform:translateY(20px) scale(.96);
+    transform: translateY(20px) scale(.96);
 
-    transition:.45s;
-
-}
-
-.start-modal.show .start-window{
-
-    transform:none;
+    transition: .45s;
 
 }
 
-.start-window h2{
+.start-modal.show .start-window {
 
-    margin-bottom:18px;
-
-    font-size:32px;
+    transform: none;
 
 }
 
-.start-window p{
+.start-window h2 {
 
-    color:#d8d8e8;
+    margin-bottom: 18px;
 
-    line-height:1.8;
+    font-size: 32px;
 
-    margin-bottom:35px;
+}
+
+.start-window p {
+
+    color: #d8d8e8;
+
+    line-height: 1.8;
+
+    margin-bottom: 35px;
 
 }
 
@@ -1662,68 +1633,68 @@ button:hover {
    Кнопки
 =========================== */
 
-.start-buttons{
+.start-buttons {
 
-    display:flex;
+    display: flex;
 
-    gap:16px;
+    gap: 16px;
 
-    justify-content:center;
-
-}
-
-.start-buttons button{
-
-    flex:1;
-
-    padding:16px 24px;
-
-    border:none;
-
-    border-radius:18px;
-
-    cursor:pointer;
-
-    font-size:16px;
-
-    font-weight:600;
-
-    transition:.3s;
+    justify-content: center;
 
 }
 
-#acceptDate{
+.start-buttons button {
 
-    background:linear-gradient(90deg,#ff6fa9,#ff4f86);
+    flex: 1;
 
-    color:white;
+    padding: 16px 24px;
+
+    border: none;
+
+    border-radius: 18px;
+
+    cursor: pointer;
+
+    font-size: 16px;
+
+    font-weight: 600;
+
+    transition: .3s;
+
+}
+
+#acceptDate {
+
+    background: linear-gradient(90deg, #ff6fa9, #ff4f86);
+
+    color: white;
 
     box-shadow:
-        0 10px 35px rgba(255,90,160,.3);
+        0 10px 35px rgba(255, 90, 160, .3);
 
 }
 
-#acceptDate:hover{
+#acceptDate:hover {
 
-    transform:translateY(-3px);
-
-}
-
-#declineDate{
-
-    background:rgba(255,255,255,.08);
-
-    color:white;
-
-    border:1px solid rgba(255,255,255,.1);
+    transform: translateY(-3px);
 
 }
 
-#declineDate:hover{
+#declineDate {
 
-    background:rgba(255,255,255,.12);
+    background: rgba(255, 255, 255, .08);
 
-    transform:translateY(-3px);
+    color: white;
+
+    border: 1px solid rgba(255, 255, 255, .1);
+
+}
+
+#declineDate:hover {
+
+    background: rgba(255, 255, 255, .12);
+
+    transform: translateY(-3px);
 
 }
 
@@ -1731,23 +1702,23 @@ button:hover {
    Повідомлення
 =========================== */
 
-.decline-message{
+.decline-message {
 
-    margin-top:22px;
+    margin-top: 22px;
 
-    min-height:24px;
+    min-height: 24px;
 
-    color:#ffd7e8;
+    color: #ffd7e8;
 
-    opacity:0;
+    opacity: 0;
 
-    transition:.35s;
+    transition: .35s;
 
 }
 
-.decline-message.show{
+.decline-message.show {
 
-    opacity:1;
+    opacity: 1;
 
 }
 
@@ -1782,65 +1753,65 @@ button:hover {
     transform: translateX(-50%) translateY(0);
 }
 
-.cards{
-    display:grid;
+.cards {
+    display: grid;
 
-    grid-template-columns:repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
 
-    gap:28px;
+    gap: 28px;
 
-    width:100%;
-    margin:35px 0;
+    width: 100%;
+    margin: 35px 0;
 }
 
-.card{
-    width:100%;
-    min-height:220px;
+.card {
+    width: 100%;
+    min-height: 220px;
 
-    box-sizing:border-box;
+    box-sizing: border-box;
 
-    display:flex;
-    flex-direction:column;
-    justify-content:center;
-    align-items:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.card:hover{
+.card:hover {
     transform: translateY(-8px);
-    border-color: rgba(255,170,210,.6);
+    border-color: rgba(255, 170, 210, .6);
 
     box-shadow:
-        0 18px 45px rgba(255,70,150,.22),
-        0 0 35px rgba(255,120,180,.12);
+        0 18px 45px rgba(255, 70, 150, .22),
+        0 0 35px rgba(255, 120, 180, .12);
 }
 
-.card strong{
-    display:block;
-    margin-top:12px;
-    margin-bottom:10px;
+.card strong {
+    display: block;
+    margin-top: 12px;
+    margin-bottom: 10px;
 
-    font-size:1.3rem;
-    font-weight:700;
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
-.card small{
-    display:block;
-    margin-top:10px;
+.card small {
+    display: block;
+    margin-top: 10px;
 
-    color:rgba(255,255,255,.82);
+    color: rgba(255, 255, 255, .82);
 
-    font-size:.96rem;
-    line-height:1.6;
+    font-size: .96rem;
+    line-height: 1.6;
 }
 
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
 
-    .cards{
+    .cards {
         grid-template-columns: 1fr;
     }
 
-    .card{
+    .card {
         min-height: 160px;
     }
 
@@ -1863,11 +1834,11 @@ button:hover {
     transform: scale(1.5);
     z-index: 5;
 
-    border-color: rgba(255,255,255,.18);
+    border-color: rgba(255, 255, 255, .18);
 
     box-shadow:
-        0 20px 45px rgba(0,0,0,.35),
-        0 0 35px rgba(255,110,180,.12);
+        0 20px 45px rgba(0, 0, 0, .35),
+        0 0 35px rgba(255, 110, 180, .12);
 }
 
 .cards .card:active {
@@ -1890,29 +1861,29 @@ button:hover {
     inset: 0;
 
     background:
-    rgba(0,0,0,.55);
+        rgba(0, 0, 0, .55);
 
     backdrop-filter: blur(12px);
 
-    display:flex;
+    display: flex;
 
-    align-items:center;
-    justify-content:center;
+    align-items: center;
+    justify-content: center;
 
-    opacity:0;
-    pointer-events:none;
+    opacity: 0;
+    pointer-events: none;
 
-    transition:.5s;
+    transition: .5s;
 
-    z-index:999;
+    z-index: 999;
 
 }
 
 
 .poem-modal.show {
 
-    opacity:1;
-    pointer-events:auto;
+    opacity: 1;
+    pointer-events: auto;
 
 }
 
@@ -1920,27 +1891,27 @@ button:hover {
 
 .poem-window {
 
-    width:min(500px,90%);
+    width: min(500px, 90%);
 
-    padding:40px;
+    padding: 40px;
 
-    border-radius:30px;
+    border-radius: 30px;
 
     background:
-    rgba(255,255,255,.12);
+        rgba(255, 255, 255, .12);
 
     border:
-    1px solid rgba(255,255,255,.25);
+        1px solid rgba(255, 255, 255, .25);
 
     box-shadow:
-    0 0 40px rgba(255,100,180,.25);
+        0 0 40px rgba(255, 100, 180, .25);
 
-    text-align:center;
+    text-align: center;
 
-    color:white;
+    color: white;
 
     animation:
-    poemOpen .6s ease;
+        poemOpen .6s ease;
 
 }
 
@@ -1948,9 +1919,9 @@ button:hover {
 
 .poem-window p {
 
-    line-height:1.8;
+    line-height: 1.8;
 
-    margin:20px 0;
+    margin: 20px 0;
 
 }
 
@@ -1958,7 +1929,7 @@ button:hover {
 
 #poemButton {
 
-    margin-top:25px;
+    margin-top: 25px;
 
 }
 
@@ -1967,21 +1938,200 @@ button:hover {
 
     from {
 
-        transform:scale(.8);
-        opacity:0;
+        transform: scale(.8);
+        opacity: 0;
 
     }
 
     to {
 
-        transform:scale(1);
-        opacity:1;
+        transform: scale(1);
+        opacity: 1;
 
     }
 
 }
 
 #poemButton.show {
-    display:inline-block;
+    display: inline-block;
     animation: fadeIn .5s ease;
+}
+
+.final-scene {
+
+    position: relative;
+
+    min-height: 420px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+
+    animation: fadeIn 1s;
+}
+
+.final-text {
+
+    position: relative;
+
+    z-index: 5;
+
+    text-align: center;
+
+    color: white;
+
+    max-width: 650px;
+
+    line-height: 2;
+
+    font-size: 22px;
+}
+
+.final-text p {
+
+    margin: 28px 0;
+
+}
+
+.floating-words {
+
+    position: absolute;
+
+    inset: 0;
+
+}
+
+.floating-words span {
+
+    position: absolute;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(var(--x), var(--y));
+
+    font-weight: 600;
+
+    font-size: clamp(16px, 2vw, 26px);
+
+    color: rgba(255, 255, 255, .15);
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, .15);
+
+    animation:
+        floating 8s ease-in-out infinite,
+        breathing 4s ease-in-out infinite;
+
+    animation-delay: var(--d);
+
+    user-select: none;
+
+}
+
+@keyframes breathing {
+
+    0%,
+    100% {
+        opacity: .12;
+        transform:
+            translate(var(--x), var(--y)) scale(1);
+    }
+
+    50% {
+        opacity: .3;
+        transform:
+            translate(calc(var(--x) + 8px),
+                calc(var(--y) - 10px)) scale(1.08);
+    }
+
+}
+
+@keyframes floating {
+
+    0%,
+    100% {
+
+        transform:
+            translate(var(--x), var(--y));
+
+    }
+
+    50% {
+
+        transform:
+            translate(calc(var(--x) + 12px),
+                calc(var(--y) - 18px));
+
+    }
+
+}
+
+.hidden {
+    display: none;
+}
+
+.final-scene.show {
+    display: flex;
+    animation: fadeIn .8s ease;
+}
+
+#poemButton {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(15px);
+    transition: .5s;
+}
+
+#poemButton.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+#finishButton {
+    display: inline-block;
+
+    opacity: 0;
+    pointer-events: none;
+
+    transform: translateY(20px);
+
+    transition:
+        opacity .8s,
+        transform .8s;
+}
+
+#finishButton.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px){
+
+    .floating-words span{
+
+        font-size:16px;
+
+    }
+
+}
+
+@media (max-width:768px){
+
+    .floating-words span{
+
+        --scale: .65;
+
+        transform:
+            translate(
+                calc(var(--x) * var(--scale)),
+                calc(var(--y) * var(--scale))
+            );
+
+    }
+
 }
