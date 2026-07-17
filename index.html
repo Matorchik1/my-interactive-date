@@ -25,6 +25,10 @@
         <source src="assets/Ludovico_Einaudi_-_Experience_(TheMP3.Info).mp3" type="audio/mpeg">
     </audio>
 
+    <audio id="typeSound" preload="auto">
+        <source src="assets/freesound_community-typewriter-typing-68696.mp3" type="audio/mpeg">
+    </audio>
+
     <button id="musicButton" class="music-button">
 
         <div class="music-icon">
@@ -954,7 +958,11 @@
                     Якщо ти дійшла сюди...
                 </h2>
 
-                <div id="letterText" class="letter-text">
+                <!-- Тут буде друкуватися текст -->
+                <div id="letterText" class="letter-text"></div>
+
+                <!-- Тут він просто зберігається -->
+                <div id="letterSource" style="display:none;">
 
                     <p>
                         Дякую, що ти витратила свій час і пройшла цей маленький шлях зі мною.
@@ -1015,6 +1023,10 @@
 
                 </div>
 
+                <div id="finalHeart" class="final-heart">
+                    <span>❤️</span>
+                </div>
+
                 <button id="finishButton" class="hidden">
                     ❤️ Дякую, що прочитала
                 </button>
@@ -1041,12 +1053,20 @@
 
         <div class="secret-window">
 
-            <div class="envelope">
+            <div id="envelopeScene" class="envelope-scene">
 
-                <div class="envelope-top"></div>
+                <div class="envelope" id="envelope">
 
-                <div class="envelope-body">
-                    💌
+                    <div class="envelope-back"></div>
+
+                    <div class="paper" id="paper">
+                        <span>❤️</span>
+                    </div>
+
+                    <div class="envelope-front"></div>
+
+                    <div class="envelope-flap" id="flap"></div>
+
                 </div>
 
             </div>
