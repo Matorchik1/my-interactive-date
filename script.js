@@ -196,10 +196,6 @@ function playEnding() {
         heart.classList.add("show");
     }, 2500);
 
-    setTimeout(() => {
-        heart.style.opacity = 0;
-    }, 7000);
-
 }
 
 const letterText =
