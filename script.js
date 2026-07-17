@@ -24,6 +24,26 @@ function type() {
 
 type();
 
+const heartReveal =
+    document.getElementById("heartReveal");
+
+
+function showHeartReveal() {
+
+    heartReveal.classList.add("show");
+
+
+    setTimeout(() => {
+
+        heartReveal.classList.remove("show");
+
+        secretOverlay.classList.add("show");
+
+
+    }, 2500);
+
+
+}
 
 // =============================
 // Прогрес проходження
@@ -124,7 +144,6 @@ function updateProgress() {
 
     progressFill.style.width = percent + "%";
 
-
     if (read === total) {
 
 
@@ -143,6 +162,8 @@ function updateProgress() {
     }
 
 
+    updateMusicByProgress();
+
 }
 
 function checkSecret() {
@@ -154,8 +175,7 @@ function checkSecret() {
     ).length;
 
 
-    if (read === total && secretReady) {
-
+    if (read === total) {
 
         if (!secretOpened) {
 
@@ -164,13 +184,109 @@ function checkSecret() {
 
             setTimeout(() => {
 
-                secretOverlay.classList.add("show");
+                showHeartReveal();
 
-            }, 800);
+            }, 50);
 
         }
 
     }
+
+}
+
+const letterText =
+    document.getElementById("letterText");
+
+
+let originalText = "";
+
+if (letterText) {
+
+    originalText = letterText.innerHTML;
+
+}
+
+
+const letterParagraphs =
+    document.querySelectorAll("#letterText p");
+
+
+function typeLetter() {
+
+
+    letterText.innerHTML = "";
+
+
+    let paragraphIndex = 0;
+
+
+    function writeParagraph() {
+
+
+        if (paragraphIndex >= letterParagraphs.length) {
+
+            setTimeout(() => {
+
+                const button = document.getElementById("finishButton");
+
+                button.classList.add("show");
+
+                for (let i = 0; i < 5; i++) {
+                    createHeart();
+                }
+
+            }, 100);
+
+            return;
+        }
+
+
+        const text = letterParagraphs[paragraphIndex].innerText;
+
+
+        const p = document.createElement("p");
+
+        letterText.appendChild(p);
+
+
+        let i = 0;
+
+
+        const timer = setInterval(() => {
+
+
+            p.innerHTML += text[i];
+
+
+            i++;
+
+
+            if (i >= text.length) {
+
+
+                clearInterval(timer);
+
+
+                paragraphIndex++;
+
+
+                setTimeout(() => {
+
+                    writeParagraph();
+
+                }, 700); // пауза між абзацами
+
+
+            }
+
+
+        }, 35); // швидкість друку
+
+
+    }
+
+
+    writeParagraph();
 
 }
 
@@ -204,23 +320,66 @@ function showPage(currentId, nextId) {
 
     if (!current || !next) return;
 
-    current.classList.remove("active");
+
+    current.classList.add("leaving");
+
 
     setTimeout(() => {
 
+        current.classList.remove("active");
+        current.classList.remove("leaving");
+
+
         next.classList.add("active");
 
-    }, 350);
 
-    if (totalPages.includes(nextId)) {
+    }, 500);
 
-        viewedPages.add(nextId);
 
-        updateProgress();
-
-    }
 }
 
+function fadeMusic(volume, time) {
+
+    let step =
+        (volume - music.volume) / 20;
+
+
+    let fade = setInterval(() => {
+
+        music.volume += step;
+
+
+        if (
+            Math.abs(music.volume - volume) < 0.01
+        ) {
+
+            clearInterval(fade);
+
+        }
+
+    }, time / 20);
+
+}
+
+function updateMusicByProgress() {
+
+    const total = menuCards.length;
+
+    const read = document.querySelectorAll(
+        ".menu-card.readed"
+    ).length;
+
+
+    const progress = read / total;
+
+
+    // мінімум 15%, максимум 60%
+    const volume = 0.15 + (progress * 0.45);
+
+
+    fadeMusic(volume, 1500);
+
+}
 
 // =============================
 // Почати
@@ -232,7 +391,11 @@ document
 
         try {
 
+            music.volume = 0;
+
             await music.play();
+
+            fadeMusic(.5, 3000);
 
         } catch (error) {
 
@@ -263,19 +426,11 @@ document.querySelectorAll(".menu-card").forEach(card => {
 // =============================
 // Назад
 // =============================
-
 document.querySelectorAll(".backMenu").forEach(button => {
 
     button.addEventListener("click", () => {
 
         const currentPage = button.closest(".page");
-
-
-        if (currentPage.id === "secretPage") {
-
-            secretReady = true;
-
-        }
 
 
         showPage(currentPage.id, "menuPage");
@@ -383,12 +538,6 @@ setInterval(createHeart, 250);
 
 
 // =============================
-// Стартовий прогрес
-// =============================
-
-updateProgress();
-
-// =============================
 // Музика
 // =============================
 
@@ -396,8 +545,14 @@ const music = document.getElementById("bgMusic");
 const musicButton = document.getElementById("musicButton");
 const equalizer = document.querySelector(".equalizer");
 
-// Гучність 50%
-music.volume = 0.5;
+music.volume = 0.15;
+
+
+// =============================
+// Стартовий прогрес
+// =============================
+
+updateProgress();
 
 // Кнопка
 
@@ -445,13 +600,109 @@ music.addEventListener("pause", () => {
 
 openLetter.addEventListener("click", () => {
 
+    fadeMusic(.08, 3000);
+
+
     secretOverlay.classList.remove("show");
+
 
     document.querySelectorAll(".page").forEach(page => {
         page.classList.remove("active");
     });
 
+
     document.getElementById("letterPage").classList.add("active");
+
+
+    setTimeout(() => {
+
+        typeLetter();
+
+    }, 300);
+
+
+});
+
+// =============================
+// Фінальна кнопка листа
+// =============================
+
+const finishButton = document.getElementById("finishButton");
+
+
+finishButton.addEventListener("click", () => {
+    fadeMusic(0.05, 3000);
+
+    finishButton.classList.add("finish-click");
+
+
+    const rect = finishButton.getBoundingClientRect();
+
+
+    for (let i = 0; i < 40; i++) {
+
+
+        setTimeout(() => {
+
+
+            const heart = document.createElement("div");
+
+
+            heart.className = "finish-heart";
+
+            heart.innerHTML = "❤️";
+
+
+            heart.style.left =
+                rect.left + rect.width / 2 + "px";
+
+
+            heart.style.top =
+                rect.top + rect.height / 2 + "px";
+
+
+            heart.style.setProperty(
+                "--x",
+                (Math.random() * 300 - 150) + "px"
+            );
+
+
+            heart.style.setProperty(
+                "--y",
+                (Math.random() * -300 - 50) + "px"
+            );
+
+
+            document.body.appendChild(heart);
+
+
+            setTimeout(() => {
+
+                heart.remove();
+
+            }, 1500);
+
+
+        }, i * 30);
+
+
+    }
+
+
+    setTimeout(() => {
+
+        finishButton.style.display = "none";
+
+    }, 500);
+
+    setTimeout(() => {
+
+        document
+            .getElementById("finalMessage")
+            .classList.add("show");
+
+
+    }, 2200);
 
 });
 
