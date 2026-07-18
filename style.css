@@ -2485,3 +2485,99 @@ button:hover {
     }
 
 }
+
+button{
+
+    position:relative;
+
+    overflow:hidden;
+
+    padding:18px 34px;
+
+    border:none;
+    border-radius:18px;
+
+    background:
+        linear-gradient(135deg,#ff6fa9,#7F5AF0);
+
+    color:#fff;
+
+    font-size:17px;
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:
+        .35s ease;
+
+    box-shadow:
+        0 12px 30px rgba(127,90,240,.28);
+
+}
+
+button:hover{
+
+    transform:translateY(-4px) scale(1.02);
+
+    box-shadow:
+        0 20px 45px rgba(127,90,240,.35),
+        0 0 30px rgba(255,120,180,.25);
+
+}
+
+button:active{
+
+    transform:scale(.96);
+
+}
+
+.music-button{
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    transition:.35s;
+
+}
+
+.music-button:hover{
+
+    transform:translateY(-5px) scale(1.02);
+
+    border-color:rgba(255,120,180,.4);
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.3),
+        0 0 35px rgba(255,120,180,.18);
+
+}
+.reset-button{
+
+    border-radius:22px;
+
+    background:rgba(255,255,255,.08);
+
+    border:1px solid rgba(255,255,255,.12);
+
+    backdrop-filter:blur(25px);
+
+    transition:.35s;
+
+}
+
+.reset-button:hover{
+
+    transform:translateY(-5px);
+
+    border-color:#ff7eb7;
+
+    box-shadow:
+        0 20px 45px rgba(0,0,0,.3),
+        0 0 30px rgba(255,120,180,.25);
+
+}
