@@ -325,7 +325,6 @@ function typeLetter() {
 // =============================
 // Навігація
 // =============================
-
 function showPage(currentId, nextId) {
 
     const current = document.getElementById(currentId);
@@ -333,24 +332,23 @@ function showPage(currentId, nextId) {
 
     if (!current || !next) return;
 
-
     current.classList.add("leaving");
-
 
     setTimeout(() => {
 
         current.classList.remove("active");
         current.classList.remove("leaving");
 
-
         next.classList.add("active");
+
+        // Позначаємо відкриту сторінку прочитаною
+        if (pageOrder.includes(nextId)) {
+            markPageAsRead(nextId);
+        }
 
         updateNavigation();
 
-
     }, 500);
-
-
 }
 
 function fadeMusic(targetVolume, time) {
@@ -471,7 +469,11 @@ document.querySelectorAll(".page").forEach(page => {
 
         if (index > 0) {
 
-            showPage(page.id, pageOrder[index - 1]);
+            const prevPage = pageOrder[index - 1];
+
+            showPage(page.id, prevPage);
+
+            markPageAsRead(prevPage);
 
         }
 
