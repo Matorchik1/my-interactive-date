@@ -1055,21 +1055,3 @@ resetButton.addEventListener("click", () => {
 
 
 });
-
-/*
-const declineDate = document.getElementById("declineDate");
-const toast = document.getElementById("toast");
-
-declineDate.addEventListener("click", () => {
-
-    toast.classList.add("show");
-
-    clearTimeout(toast.timer);
-
-    toast.timer = setTimeout(() => {
-        toast.classList.remove("show");
-    }, 2500);
-
-});
-
-*/
