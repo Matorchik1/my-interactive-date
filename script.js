@@ -61,6 +61,38 @@ const progressHeart = document.querySelector(".progress-heart");
 
 const menuCards = document.querySelectorAll(".menu-card");
 
+const pageOrder = [
+    "aboutPage",
+    "characterPage",
+    "valuesPeoplePage",
+    "principlesPage",
+    "lifePage",
+    "dreamsPage",
+    "joyPage",
+    "tastePage",
+    "stylePage",
+    "carePage",
+    "relationshipPage",
+    "girlPage",
+    "momentsPage",
+    "secretPage"
+];
+
+function markPageAsRead(pageId) {
+
+    const card = document.querySelector(
+        `.menu-card[data-page="${pageId}"]`
+    );
+
+    if (!card || card.classList.contains("readed")) {
+        return;
+    }
+
+    localStorage.setItem("read_" + pageId, "true");
+    card.classList.add("readed");
+
+    updateProgress();
+}
 
 menuCards.forEach(card => {
 
@@ -73,38 +105,13 @@ menuCards.forEach(card => {
 
         // записуємо що відкрили
 
-        localStorage.setItem(
-            "read_" + page,
-            "true"
-        );
-
-
-        card.classList.add("readed");
+        markPageAsRead(page);
 
 
     });
 
 
 });
-
-
-
-// Відновлення після перезавантаження
-
-menuCards.forEach(card => {
-
-
-    const page = card.dataset.page;
-
-
-    if (localStorage.getItem("read_" + page)) {
-
-        card.classList.add("readed");
-
-    }
-
-});
-
 
 const secretOverlay = document.getElementById("secretOverlay");
 const openLetter = document.getElementById("openLetter");
@@ -115,35 +122,35 @@ function updateProgress() {
 
 
     const total = menuCards.length;
-
-
-    const read = document.querySelectorAll(
-        ".menu-card.readed"
-    ).length;
-
+    const read = document.querySelectorAll(".menu-card.readed").length;
 
     const percent = (read / total) * 100;
 
-
     progressFill.style.width = percent + "%";
 
+    document.querySelectorAll(".sectionProgress").forEach(el => {
+
+        if (read === total) {
+
+            el.textContent = "👇 Натисни на мене";
+
+            el.classList.add("ready");
+
+        } else {
+
+            el.textContent = `${read} із ${total}`;
+
+            el.classList.remove("ready");
+
+        }
+
+    });
+
     if (read === total) {
-
-
         progressHeart.classList.add("finish");
-
-
-        // НЕ відкриваємо одразу
-
-
     } else {
-
-
         progressHeart.classList.remove("finish");
-
-
     }
-
 
     updateMusicByProgress();
 
@@ -201,12 +208,40 @@ function playEnding() {
 const letterText =
     document.getElementById("letterText");
 
+const letterCountdown =
+    document.getElementById("letterCountdown");
+
 const finalScene =
     document.getElementById("finalScene");
 
 const letterParagraphs =
     document.querySelectorAll("#letterSource p");
 
+
+async function startLetterCountdown() {
+
+    const values = ["3", "2", "1", "💌"];
+
+    letterCountdown.style.display = "block";
+
+    for (const value of values) {
+
+        letterCountdown.textContent = value;
+        letterCountdown.classList.add("show");
+
+        await new Promise(r => setTimeout(r, 800));
+
+        letterCountdown.classList.remove("show");
+
+        await new Promise(r => setTimeout(r, 250));
+
+    }
+
+    letterCountdown.style.display = "none";
+
+    typeLetter();
+
+}
 
 function typeLetter() {
 
@@ -287,25 +322,6 @@ function typeLetter() {
 
 }
 
-menuCards.forEach(card => {
-
-    card.addEventListener("click", () => {
-
-        const page = card.dataset.page;
-
-        localStorage.setItem(
-            "read_" + page,
-            "true"
-        );
-
-        card.classList.add("readed");
-
-        updateProgress();
-
-    });
-
-});
-
 // =============================
 // Навігація
 // =============================
@@ -328,6 +344,8 @@ function showPage(currentId, nextId) {
 
 
         next.classList.add("active");
+
+        updateNavigation();
 
 
     }, 500);
@@ -439,25 +457,90 @@ document.querySelectorAll(".menu-card").forEach(card => {
 // =============================
 // Назад
 // =============================
-document.querySelectorAll(".backMenu").forEach(button => {
+document.querySelectorAll(".page").forEach(page => {
 
-    button.addEventListener("click", () => {
+    const prev = page.querySelector(".nav-prev");
+    const menu = page.querySelector(".nav-menu");
+    const next = page.querySelector(".nav-next");
 
-        const currentPage = button.closest(".page");
+    if (!prev) return;
 
+    prev.addEventListener("click", () => {
 
-        showPage(currentPage.id, "menuPage");
+        const index = pageOrder.indexOf(page.id);
 
+        if (index > 0) {
 
-        setTimeout(() => {
+            showPage(page.id, pageOrder[index - 1]);
 
-            checkSecret();
+        }
 
-        }, 500);
+    });
+
+    next.addEventListener("click", () => {
+
+        const index = pageOrder.indexOf(page.id);
+
+        if (index < pageOrder.length - 1) {
+
+            const nextPage = pageOrder[index + 1];
+
+            showPage(page.id, nextPage);
+
+            markPageAsRead(nextPage);
+
+        }
+
+    });
+
+    menu.addEventListener("click", () => {
+
+        showPage(page.id, "menuPage");
+
+        setTimeout(checkSecret, 500);
 
     });
 
 });
+
+function updateNavigation() {
+
+    const current = document.querySelector(".page.active");
+
+    if (!current) return;
+
+    const prev = current.querySelector(".nav-prev");
+    const next = current.querySelector(".nav-next");
+    const menu = current.querySelector(".nav-menu");
+
+    if (!prev) return;
+
+    const index = pageOrder.indexOf(current.id);
+
+    // Перша сторінка
+    prev.style.visibility = (index === 0)
+        ? "hidden"
+        : "visible";
+
+    // Остання сторінка
+    next.style.visibility = (index === pageOrder.length - 1)
+        ? "hidden"
+        : "visible";
+
+    // Блимання "В меню" після проходження всіх розділів
+    const read = document.querySelectorAll(".menu-card.readed").length;
+
+    if (read === pageOrder.length) {
+
+        menu.classList.add("blink");
+
+    } else {
+
+        menu.classList.remove("blink");
+
+    }
+
+}
 
 
 // =============================
@@ -565,10 +648,25 @@ music.volume = 0.15;
 typeSound.volume = 0.08;
 
 // =============================
+// Відновлення прогресу
+// =============================
+
+menuCards.forEach(card => {
+
+    const page = card.dataset.page;
+
+    if (localStorage.getItem("read_" + page) === "true") {
+        card.classList.add("readed");
+    }
+
+});
+
+// =============================
 // Стартовий прогрес
 // =============================
 
 updateProgress();
+updateNavigation();
 
 // Кнопка
 
@@ -650,7 +748,7 @@ openLetter.addEventListener("click", () => {
             .getElementById("envelopeScene")
             .style.display = "none";
 
-        typeLetter();
+        startLetterCountdown();
 
     }, 4300);
 
@@ -814,6 +912,7 @@ resetButton.addEventListener("click", () => {
 
 
         updateProgress();
+        updateNavigation();
     }
 
 
