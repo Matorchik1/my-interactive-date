@@ -1,3 +1,42 @@
+const facts = [
+
+    "☕ Обожнюю каву.",
+    "🎵 Часто працюю під атмосферну музику.",
+    "⚡ Люблю автоматизувати рутинні речі.",
+    "🎯 Якщо мене щось захопило — можу повністю зануритися в це.",
+    "🎬 Люблю дивитись фільми, аніме та дорами.",
+    "🌃 Люблю місця з приглушеним світлом.",
+    "💬 Ціную чесні розмови.",
+    "🌧️ Люблю дощову погоду.",
+    "💞 Ціную взаємність більше, ніж гучні слова.",
+    "🎮 Люблю пограти у відеоігри.",
+    "🎁 Люблю робити приємні сюрпризи.",
+    "🌍 Хотів би побачити багато нових місць.",
+    "📱 Можу довго шукати ідеальне рішення замість першого-ліпшого.",
+    "😎 Рідко здаюся, якщо вже поставив собі мету."
+
+];
+
+let availableFacts = [];
+
+function getRandomFact() {
+
+    if (availableFacts.length === 0) {
+
+        availableFacts = [...facts];
+
+    }
+
+    const index = Math.floor(Math.random() * availableFacts.length);
+
+    const fact = availableFacts[index];
+
+    availableFacts.splice(index, 1);
+
+    return fact;
+
+}
+
 // =============================
 // Печатання заголовка
 // =============================
@@ -191,7 +230,36 @@ function playEnding() {
 
     const words = document.querySelector(".floating-words");
     const text = document.querySelector(".final-text");
-    const heart = document.getElementById("finalHeart");
+
+    const heart =
+        document.getElementById("finalHeart");
+
+    const ending =
+        document.getElementById("endingText");
+
+    const line1 =
+        document.getElementById("endingLine1");
+
+    const line2 =
+        document.getElementById("endingLine2");
+
+    document
+        .getElementById("restartStory")
+        .addEventListener("click", () => {
+
+            menuCards.forEach(card => {
+
+                const page = card.dataset.page;
+
+                localStorage.removeItem("read_" + page);
+
+                card.classList.remove("readed");
+
+            });
+
+            location.reload();
+
+        });
 
     words.style.transition = "3s";
     text.style.transition = "3s";
@@ -200,8 +268,53 @@ function playEnding() {
     text.style.opacity = 0;
 
     setTimeout(() => {
+
         heart.classList.add("show");
+
+        setTimeout(() => {
+
+            heart.classList.add("finish");
+
+        }, 1200);
+
     }, 2500);
+
+    // 5 секунд тиші
+
+    setTimeout(() => {
+
+        ending.classList.remove("hidden");
+        ending.classList.add("show");
+
+        line1.classList.add("show");
+
+    }, 7500);
+
+    // "це лише початок"
+
+    setTimeout(() => {
+
+        line2.classList.add("show");
+
+        fadeMusic(0.05, 6000);
+
+    }, 10500);
+
+    // легкий удар серця
+
+    setTimeout(() => {
+
+        heart.classList.add("pulse");
+
+    }, 14500);
+
+    // кнопка
+
+    setTimeout(() => {
+
+        restart.classList.add("show");
+
+    }, 17500);
 
 }
 
@@ -220,27 +333,40 @@ const letterParagraphs =
 
 async function startLetterCountdown() {
 
-    const values = ["3", "2", "1", "💌"];
+    const steps = ["3", "2", "1", "💌"];
 
-    letterCountdown.style.display = "block";
+    letterCountdown.style.display = "flex";
 
-    for (const value of values) {
+    for (const step of steps) {
 
-        letterCountdown.textContent = value;
+        letterCountdown.textContent = step;
+
+        if (step === "💌") {
+            document.body.classList.add("dim");
+        }
+
+        letterCountdown.classList.remove("hide");
+
+        void letterCountdown.offsetWidth;
+
         letterCountdown.classList.add("show");
 
-        await new Promise(r => setTimeout(r, 800));
+        await new Promise(r => setTimeout(r, 900));
 
         letterCountdown.classList.remove("show");
+        letterCountdown.classList.add("hide");
 
-        await new Promise(r => setTimeout(r, 250));
-
+        await new Promise(r => setTimeout(r, 350));
     }
 
     letterCountdown.style.display = "none";
 
     typeLetter();
 
+    // Через секунду починаємо повертати світло
+    setTimeout(() => {
+        document.body.classList.remove("dim");
+    }, 1200);
 }
 
 function typeLetter() {
@@ -340,6 +466,14 @@ function showPage(currentId, nextId) {
         current.classList.remove("leaving");
 
         next.classList.add("active");
+
+        const factBlock = next.querySelector(".fact-text");
+
+        if (factBlock) {
+
+            factBlock.textContent = getRandomFact();
+
+        }
 
         // Позначаємо відкриту сторінку прочитаною
         if (pageOrder.includes(nextId)) {
@@ -913,6 +1047,8 @@ resetButton.addEventListener("click", () => {
         });
 
 
+        availableFacts = [];
+
         updateProgress();
         updateNavigation();
     }
@@ -920,7 +1056,7 @@ resetButton.addEventListener("click", () => {
 
 });
 
-
+/*
 const declineDate = document.getElementById("declineDate");
 const toast = document.getElementById("toast");
 
@@ -936,3 +1072,4 @@ declineDate.addEventListener("click", () => {
 
 });
 
+*/
