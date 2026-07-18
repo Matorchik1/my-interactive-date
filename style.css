@@ -2387,3 +2387,101 @@ button:hover {
     transform:scale(1);
 
 }
+
+.page-navigation {
+
+    display: flex;
+    gap: 18px;
+
+    margin-top: 45px;
+
+}
+
+.nav-btn {
+
+    flex: 1;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    padding: 18px 24px;
+
+    border: 1px solid rgba(255,255,255,.12);
+    border-radius: 20px;
+
+    background: rgba(255,255,255,.08);
+    backdrop-filter: blur(18px);
+
+    color: #fff;
+
+    font-size: 17px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        transform .3s ease,
+        background .3s ease,
+        border-color .3s ease,
+        box-shadow .3s ease;
+
+}
+
+.nav-btn:hover {
+
+    transform: translateY(-4px);
+
+    background: rgba(255,255,255,.13);
+
+    border-color: rgba(255,120,180,.45);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.28),
+        0 0 30px rgba(255,120,180,.18);
+
+}
+
+.nav-btn:active {
+
+    transform: scale(.97);
+
+}
+
+.nav-btn:first-child {
+
+    background:
+        linear-gradient(135deg,
+            rgba(255,255,255,.08),
+            rgba(120,140,255,.08));
+
+}
+
+.nav-btn:last-child {
+
+    background:
+        linear-gradient(135deg,
+            rgba(255,120,180,.18),
+            rgba(127,90,240,.18));
+
+}
+
+.nav-btn:last-child:hover {
+
+    background:
+        linear-gradient(135deg,
+            rgba(255,120,180,.28),
+            rgba(127,90,240,.28));
+
+}
+
+@media (max-width:768px){
+
+    .page-navigation{
+
+        flex-direction: column;
+
+    }
+
+}
