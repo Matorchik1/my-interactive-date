@@ -2,1470 +2,827 @@
 <html lang="uk">
 
 <head>
+  <meta charset="UTF-8">
 
-    <meta charset="UTF-8">
-    <meta name="robots" content="width=device-width, initial-scale=1.0, noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Історія, яку я хочу тобі показати ❤️</title>
+  <meta name="robots" content="noindex, nofollow">
 
-    <link rel="stylesheet" href="style.css">
+  <title>Маленьке побачення для тебе ❤️</title>
 
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <div class="background">
-        <div class="stars"></div>
-        <div class="gradient"></div>
-    </div>
+  <!-- ФОН -->
 
-    <div id="hearts"></div>
+  <div class="background-glow">
+    <div class="blob blob-one"></div>
+    <div class="blob blob-two"></div>
+    <div class="blob blob-three"></div>
+  </div>
 
-    <audio id="bgMusic" loop>
-        <source src="assets/Ludovico_Einaudi_-_Experience_(TheMP3.Info).mp3" type="audio/mpeg">
-    </audio>
+  <div id="hearts"></div>
 
-    <audio id="typeSound" preload="auto">
-        <source src="assets/freesound_community-typewriter-typing-68696.mp3" type="audio/mpeg">
-    </audio>
 
-    <button id="musicButton" class="music-button">
+  <!-- МУЗИКА -->
 
-        <div class="music-icon">
+  <audio id="backgroundMusic" loop preload="auto">
+    <source src="assets/Ludovico_Einaudi_-_Experience_(TheMP3.Info).mp3" type="audio/mpeg">
+  </audio>
 
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
 
-                <path d="M9 18V5l12-2v13"></path>
-                <circle cx="6" cy="18" r="3"></circle>
-                <circle cx="18" cy="16" r="3"></circle>
+  <!-- КНОПКА МУЗИКИ -->
 
-            </svg>
+  <button class="music-player" id="musicButton" type="button" aria-label="Увімкнути музику">
 
-        </div>
+    <span class="music-icon">
+      ▶
+    </span>
 
-        <div class="music-info">
+    <div class="music-text">
 
-            <span class="music-title">Атмосфера</span>
+      <span class="music-title">
+        Ludovico Einaudi
+      </span>
 
-            <div class="equalizer">
-
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-
-            </div>
-
-        </div>
-
-    </button>
-
-    <button id="resetProgress" class="reset-button">
-
-        <div class="reset-icon">
-            🌙
-        </div>
-
-        <div class="reset-info">
-
-            <span class="reset-title">
-                Скинути
-            </span>
-
-            <span class="reset-subtitle">
-                Дивитись повторно
-            </span>
-
-        </div>
-
-    </button>
-
-    <div class="progress">
-
-        <div class="progress-line"></div>
-
-        <div class="progress-fill" id="progressFill"></div>
-
-        <div class="progress-heart">❤️</div>
+      <span class="music-status">
+        Experience
+      </span>
 
     </div>
 
-    <main id="app">
+    <div class="equalizer">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
 
-        <!-- ========================= -->
-        <!-- ГОЛОВНА -->
-        <!-- ========================= -->
+  </button>
 
-        <section class="page active" id="page1">
 
-            <div class="glass">
+  <!-- ======================================== -->
+  <!-- 01. START -->
+  <!-- ======================================== -->
 
-                <span class="hello">
-                    Вітаю, Сонечко 😊
-                </span>
+  <section class="hero" id="hero">
 
-                <h1 id="typing"></h1>
+    <div class="container hero-container">
 
-                <p class="subtitle">
+      <div class="hero-heart">
+        ❤️
+      </div>
 
-                    Мені захотілося познайомити тебе зі мною трохи незвичним способом 😊
-                    Не просто кількома повідомленнями, а маленькою історією, яку я зробив власноруч.
+      <span class="eyebrow">
+        маленьке побачення тільки для тебе
+      </span>
 
-                    Тут зібрані мої думки, погляди, мрії та маленькі частинки мене.
+      <h1>
+        Сьогодні я хочу
+        <span class="gradient-text">
+          трохи більше відкрити тобі себе
+        </span>
+      </h1>
 
-                    Замість довгих повідомлень
-                    я зробив невелике інтерактивне побачення.
+      <p class="hero-description">
+        Не просто написати ще одне довге повідомлення.
 
-                </p>
+        Мені захотілося зробити для тебе маленьку історію —
+        з музикою, моїми думками, характером,
+        мріями та речами, які для мене справді важливі.
+      </p>
 
-                <button id="startButton">
-                    Почати
-                </button>
+      <button class="main-button" id="startButton" type="button">
+        Почати наше побачення ❤️
+      </button>
 
-            </div>
+    </div>
 
-        </section>
+    <div class="scroll-hint">
+      листай нижче
+      <span>↓</span>
+    </div>
 
-        <!-- ========================= -->
-        <!-- МЕНЮ -->
-        <!-- ========================= -->
+  </section>
 
-        <section class="page" id="menuPage">
 
-            <div class="glass menuGlass">
+  <!-- ======================================== -->
+  <!-- 02. ABOUT -->
+  <!-- ======================================== -->
 
-                <span class="hello">
-                    Обери розділ
-                </span>
+  <section id="about">
 
-                <h2>
-                    Трохи ближче до мене 😊
-                </h2>
+    <div class="container split">
 
-                <p class="subtitle">
-                    Тут немає правильного порядку.
-                    Обери те, що тобі цікаво дізнатися першим ❤️
+      <div class="visual-card reveal">
 
-                    *Головне, не поспішай
-                </p>
+        <div class="visual-number">
+          01
+        </div>
 
-                <div class="menu">
+        <video class="visual-gif" src="assets/about.mp4" autoplay loop muted playsinline></video>
 
-                    <!-- 01 -->
-                    <div class="menu-card" data-page="aboutPage">
+      </div>
 
-                        <span class="menu-number">01</span>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">👤</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+      <div class="text-block reveal">
 
-                        <h3>Хто я?</h3>
+        <span class="eyebrow">
+          трохи про мене
+        </span>
 
-                        <p>
-                            Коротко про мене, мій характер,
-                            сильні сторони та те, що може здивувати.
-                        </p>
+        <h2>
+          Хто я?
+        </h2>
 
-                    </div>
+        <p>
+          Мені завжди подобалося створювати щось власними руками —
+          від маленьких ідей до більш великих проєктів.
+        </p>
 
+        <p>
+          Особливо люблю момент, коли те,
+          що ще недавно існувало тільки в голові,
+          поступово стає реальністю.
+        </p>
 
-                    <!-- 02 -->
-                    <div class="menu-card" data-page="characterPage">
+        <p>
+          Напевно, саме тому з'явилася і ця сторінка.
+          Можна було просто написати тобі ще одне повідомлення,
+          але це було б занадто просто 😊
+        </p>
 
-                        <span class="menu-number">02</span>
+      </div>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">💭</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+    </div>
 
-                        <h3>Мій характер</h3>
+  </section>
 
-                        <p>
-                            Як я спілкуюся, думаю,
-                            реагую на ситуації та людей.
-                        </p>
 
-                    </div>
+  <!-- ======================================== -->
+  <!-- 03. CHARACTER -->
+  <!-- ======================================== -->
 
+  <section id="character">
 
-                    <!-- 03 -->
-                    <div class="menu-card" data-page="valuesPeoplePage">
+    <div class="container">
 
-                        <span class="menu-number">03</span>
+      <div class="section-heading reveal">
 
-                        <div class="menu-top">
-                            <span class="menu-icon">❤️</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+        <span class="eyebrow">
+          мій характер
+        </span>
 
-                        <h3>Що я ціную в людях</h3>
+        <h2>
+          Який я, коли стаю ближчим?
+        </h2>
 
-                        <p>
-                            Довіра, щирість, повага,
-                            турбота та підтримка.
-                        </p>
+        <p>
+          Я не з тих людей, хто одразу показує
+          весь свій внутрішній світ.
 
-                    </div>
+          Але тобі я відкриваюся настільки неймовірно просто..
+        </p>
 
+      </div>
 
-                    <!-- 04 -->
-                    <div class="menu-card" data-page="principlesPage">
 
-                        <span class="menu-number">04</span>
+      <div class="feature-grid">
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🌱</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+        <article class="feature-card reveal">
 
-                        <h3>Мої цінності</h3>
+          <span class="feature-icon">
+            🫶
+          </span>
 
-                        <p>
-                            Моє бачення сім'ї,
-                            стосунків та важливих принципів.
-                        </p>
+          <h3>
+            Поступово стаю ближчим
+          </h3>
 
-                    </div>
+          <p>
+            Мені важливо відчути комфорт і довіру. 
+            Коли вони з’являються — я відкриваюся набагато більше й стаю дуже щирим з людиною.
+          </p>
 
+        </article>
 
-                    <!-- 05 -->
-                    <div class="menu-card" data-page="lifePage">
 
-                        <span class="menu-number">05</span>
+        <article class="feature-card reveal">
 
-                        <div class="menu-top">
-                            <span class="menu-icon">💻</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+          <span class="feature-icon">
+            😄
+          </span>
 
-                        <h3>Чим я живу?</h3>
+          <h3>
+            Люблю сміятися
+          </h3>
 
-                        <p>
-                            Робота, хобі, проєкти
-                            та те, що мене надихає.
-                        </p>
+          <p>
+            Люблю жарти та атмосферу,
+            в якій можна бути собою
+            і не думати про кожне слово.
+          </p>
 
-                    </div>
+        </article>
 
 
-                    <!-- 06 -->
-                    <div class="menu-card" data-page="dreamsPage">
+        <article class="feature-card reveal">
 
-                        <span class="menu-number">06</span>
+          <span class="feature-icon">
+            🎯
+          </span>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🚀</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+          <h3>
+            Можу сильно захопитися
+          </h3>
 
-                        <h3>Мої цілі та мрії</h3>
+          <p>
+            Якщо щось мене справді зацікавило,
+            можу повністю в це зануритися.
+          </p>
 
-                        <p>
-                            Чого хочу досягти
-                            та яке життя хочу побудувати.
-                        </p>
+        </article>
 
-                    </div>
 
+        <article class="feature-card reveal">
 
-                    <!-- 07 -->
-                    <div class="menu-card" data-page="joyPage">
+          <span class="feature-icon">
+            💬
+          </span>
 
-                        <span class="menu-number">07</span>
+          <h3>
+            Ціную розмови
+          </h3>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">😊</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+          <p>
+            Особливо ті, де можна бути чесними
+            одне з одним і говорити не лише
+            про хороше.
+          </p>
 
-                        <h3>Що мене радує?</h3>
+        </article>
 
-                        <p>
-                            Маленькі радості,
-                            моменти щастя та відпочинок.
-                        </p>
+      </div>
 
-                    </div>
+    </div>
 
+  </section>
 
-                    <!-- 08 -->
-                    <div class="menu-card" data-page="tastePage">
 
-                        <span class="menu-number">08</span>
+  <!-- ======================================== -->
+  <!-- 04. SMALL FACTS -->
+  <!-- ======================================== -->
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🎵</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+  <section id="facts">
 
-                        <h3>Мої смаки</h3>
+    <div class="container">
 
-                        <p>
-                            Музика, фільми, їжа
-                            та атмосфера, яку люблю.
-                        </p>
+      <div class="section-heading reveal">
 
-                    </div>
+        <span class="eyebrow">
+          маленькі деталі
+        </span>
 
+        <h2>
+          Кілька фактів про мене
+        </h2>
 
-                    <!-- 09 -->
-                    <div class="menu-card" data-page="stylePage">
+        <p>
+          Мабуть, саме з таких дрібниць
+          і складається людина.
+        </p>
 
-                        <span class="menu-number">09</span>
+      </div>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🏡</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
 
-                        <h3>Мій стиль життя</h3>
+      <div class="facts-grid">
 
-                        <p>
-                            Мій день, звички,
-                            активність та затишок.
-                        </p>
+        <div class="fact-card reveal">
+          <span>☕</span>
 
-                    </div>
+          <strong>
+            Кава
+          </strong>
 
+          <p>
+            Так. Дуже люблю.
+          </p>
+        </div>
 
-                    <!-- 10 -->
-                    <div class="menu-card" data-page="carePage">
 
-                        <span class="menu-number">10</span>
+        <div class="fact-card reveal">
+          <span>🎵</span>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🤝</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+          <strong>
+            Музика
+          </strong>
 
-                        <h3>Як я проявляю турботу</h3>
+          <p>
+            Часто працюю під атмосферну музику.
+          </p>
+        </div>
 
-                        <p>
-                            Як показую увагу,
-                            підтримую та проявляю почуття.
-                        </p>
 
-                    </div>
+        <div class="fact-card reveal">
+          <span>🌧️</span>
 
+          <strong>
+            Дощ
+          </strong>
 
-                    <!-- 11 -->
-                    <div class="menu-card" data-page="relationshipPage">
+          <p>
+            Люблю дощову погоду
+            та її особливу атмосферу.
+          </p>
+        </div>
 
-                        <span class="menu-number">11</span>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">👫</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+        <div class="fact-card reveal">
+          <span>🌃</span>
 
-                        <h3>Які стосунки я хочу</h3>
+          <strong>
+            Приглушене світло
+          </strong>
 
-                        <p>
-                            Моє бачення спілкування,
-                            близькості та взаємності.
-                        </p>
+          <p>
+            Мені дуже подобаються
+            затишні місця без яскравого світла.
+          </p>
+        </div>
 
-                    </div>
 
+        <div class="fact-card reveal">
+          <span>🎬</span>
 
-                    <!-- 12 -->
-                    <div class="menu-card" data-page="girlPage">
+          <strong>
+            Фільми
+          </strong>
 
-                        <span class="menu-number">12</span>
+          <p>
+            Дивлюся фільми,
+            аніме та дорами.
+          </p>
+        </div>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🌹</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
 
-                        <h3>Що мені подобається в дівчині</h3>
+        <div class="fact-card reveal">
+          <span>🎮</span>
 
-                        <p>
-                            Характер, щирість,
-                            гумор та внутрішня краса.
-                        </p>
+          <strong>
+            Ігри
+          </strong>
 
-                    </div>
+          <p>
+            Іноді люблю просто
+            сісти й пограти.
+          </p>
+        </div>
 
 
-                    <!-- 13 -->
-                    <div class="menu-card" data-page="momentsPage">
+        <div class="fact-card reveal">
+          <span>🎁</span>
 
-                        <span class="menu-number">13</span>
+          <strong>
+            Сюрпризи
+          </strong>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">📸</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+          <p>
+            Люблю робити приємні
+            речі для близьких.
+          </p>
+        </div>
 
-                        <h3>Моменти</h3>
 
-                        <p>
-                            Фото, спогади,
-                            подорожі та історії.
-                        </p>
+        <div class="fact-card reveal">
+          <span>🌍</span>
 
-                    </div>
+          <strong>
+            Подорожі
+          </strong>
 
+          <p>
+            Хотів би побачити
+            ще дуже багато нових місць.
+          </p>
+        </div>
 
-                    <!-- 14 -->
-                    <div class="menu-card" data-page="secretPage">
+      </div>
 
-                        <span class="menu-number">14</span>
+    </div>
 
-                        <div class="menu-top">
-                            <span class="menu-icon">🔐</span>
-                            <span class="menu-arrow">→</span>
-                        </div>
+  </section>
 
-                        <h3>Щось особисте</h3>
 
-                        <p>
-                            Те, чого потрібно досягти.
-                        </p>
+  <!-- ======================================== -->
+  <!-- 05. VALUES -->
+  <!-- ======================================== -->
 
-                    </div>
+  <section id="values">
 
-                </div>
+    <div class="container split reverse">
 
-            </div>
+      <div class="text-block reveal">
 
-        </section>
+        <span class="eyebrow">
+          те, що справді важливо
+        </span>
 
+        <h2>
+          Люди та довіра
+        </h2>
 
-        <!-- ========================= -->
-        <!-- ПРО МЕНЕ -->
-        <!-- ========================= -->
+        <p>
+          Для мене дуже важливі щирість,
+          довіра, повага та справжність.
+        </p>
 
-        <section class="page" id="aboutPage">
+        <p>
+          Мені хочеться знати,
+          що поруч людина, на яку можна покластися,
+          і самому бути для неї такою людиною.
+        </p>
 
-            <div class="glass">
+        <p>
+          Я більше ціную взаємність,
+          ніж красиві та гучні слова.
+        </p>
 
-                <span class="hello">👤 Про мене</span>
+      </div>
 
-                <h2>
-                    Було б приємно познайомитися ближче 😊
-                </h2>
 
-                <p class="subtitle">
-                    Мені завжди подобалося створювати щось власними руками — від маленьких ідей до більш великих
-                    проєктів.
+      <div class="quote-card reveal">
 
-                    Люблю бачити, як ідея поступово стає реальністю.
+        <span class="quote-mark">
+          “
+        </span>
 
-                    Саме тому й з'явився цей маленький сайт.
+        <p>
+          Маленькі вчинки іноді говорять
+          про людину набагато більше,
+          ніж десятки красивих фраз.
+        </p>
 
-                    Я не ідеальна людина, у мене є свої особливості, але я ціную щирість, повагу і людей, поруч з якими
-                    можна залишатися собою.
-                </p>
+      </div>
 
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
+    </div>
 
-                <div class="page-navigation">
+  </section>
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
+  <!-- ======================================== -->
+  <!-- 06. CARE -->
+  <!-- ======================================== -->
 
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
+  <section id="care">
 
-                </div>
+    <div class="container">
 
-            </div>
+      <div class="center-content reveal">
 
-        </section>
+        <span class="eyebrow">
+          як я проявляю почуття
+        </span>
 
+        <h2>
+          Для мене турбота — це дії
+        </h2>
 
-        <!-- ========================= -->
-        <!-- ХАРАКТЕР -->
-        <!-- ========================= -->
+        <p>
+          Вислухати.
 
-        <section class="page" id="characterPage">
+          Допомогти.
 
-            <div class="glass">
+          Бути поруч, коли це потрібно.
 
-                <span class="hello">💭 Мій характер</span>
+          Запам'ятати маленьку річ,
+          яку людина випадково сказала кілька тижнів тому.
 
-                <h2>
-                    Який я у спілкуванні?
-                </h2>
+          Зробити щось приємне просто тому,
+          що хочеться побачити її усмішку.
+        </p>
 
-                <p class="subtitle">
-                    Я не з тих людей, хто одразу показує весь свій внутрішній світ.
-                    Мені потрібен час, щоб по-справжньому довіритися людині. Але якщо вона стає близькою — я дуже ціную цей зв'язок.
-                    
-                    Люблю сміятися, жартувати і створювати поруч атмосферу, в якій комфортно бути собою.
-                    
-                    І, мабуть, найбільше про мене говорить те, що коли людина стає для мене важливою — мені хочеться потроху відкривати їй справжнього себе.
-                </p>
+      </div>
 
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
+    </div>
 
-                <div class="page-navigation">
+  </section>
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
+  <!-- ======================================== -->
+  <!-- 07. RELATIONSHIPS -->
+  <!-- ======================================== -->
 
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
+  <section id="relationships">
 
-                </div>
+    <div class="container">
 
-            </div>
+      <div class="section-heading reveal">
 
-        </section>
+        <span class="eyebrow">
+          про стосунки
+        </span>
 
+        <h2>
+          Я не шукаю ідеальну людину
+        </h2>
 
-        <!-- ========================= -->
-        <!-- ЛЮДИ -->
-        <!-- ========================= -->
+      </div>
 
-        <section class="page" id="valuesPeoplePage">
 
-            <div class="glass">
+      <div class="relationship-box reveal">
 
-                <span class="hello">❤️ Люди</span>
+        <p>
+          І я не вірю в ідеальні стосунки.
+        </p>
 
-                <h2>
-                    Що для мене важливо в людині
-                </h2>
+        <p>
+          Мені хочеться бути поруч із людиною,
+          з якою можна залишатися собою,
+          чесно говорити про хороше і складне,
+          сміятися, підтримувати одне одного
+          та разом проживати різні моменти життя.
+        </p>
 
-                <div class="cards">
+        <p>
+          Для мене найміцніші стосунки
+          будуються поступово —
+          на довірі, повазі,
+          вірності та взаємному бажанні бути поруч.
+        </p>
 
-                    <div class="card">
-                        🤝
-                        <strong>Довіра</strong>
-                        <small>Можливість знати, що поруч людина, на яку можна покластися.</small>
-                    </div>
+      </div>
 
-                    <div class="card">
-                        💬
-                        <strong>Відвертість</strong>
-                        <small>Говорити про хороше і складне, не граючи чужі ролі.</small>
-                    </div>
+    </div>
 
-                    <div class="card">
-                        🤍
-                        <strong>Справжність</strong>
-                        <small>Коли людина не боїться бути собою.</small>
-                    </div>
+  </section>
 
-                    <div class="card">
-                        ❤️
-                        <strong>Турбота</strong>
-                        <small>Маленькі речі, які показують: «мені не байдуже».</small>
-                    </div>
 
-                </div>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
+  <!-- ======================================== -->
+  <!-- 08. GIRL -->
+  <!-- ======================================== -->
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
+  <section id="girl">
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
+    <div class="container">
 
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
+      <div class="girl-card reveal">
 
-                </div>
+        <span class="big-icon">
+          🌹
+        </span>
 
-            </div>
+        <span class="eyebrow">
+          що мені подобається в дівчині
+        </span>
 
-        </section>
+        <h2>
+          Не лише зовнішність
+        </h2>
 
+        <p>
+          Зовнішність може привернути увагу.
 
-        <!-- ========================= -->
-        <!-- ПРИНЦИПИ -->
-        <!-- ========================= -->
+          Але залишаюся я зовсім не через неї.
+        </p>
 
-        <section class="page" id="principlesPage">
+        <p>
+          Мене захоплюють щирість,
+          характер, почуття гумору,
+          внутрішня сила, доброта
+          і людина, поруч із якою
+          можна бути собою.
+        </p>
 
-            <div class="glass">
+        <p class="highlight">
+          Найбільше ціную ту,
+          з ким хочеться не просто проводити час,
+          а створювати спільні спогади.
+        </p>
 
-                <span class="hello">🌱 Мої принципи</span>
+      </div>
 
-                <h2>
-                    Те, чого я дотримуюсь
-                </h2>
+    </div>
 
-                <p class="subtitle">
-                    Я вірю, що людину показують не слова, а вчинки.
-                    
-                    Для мене важливо тримати своє слово, визнавати помилки і ставитися до інших так, як хотів би, щоб ставилися до мене.
-                    
-                    Якщо я свідомо обираю бути з людиною, то залишаюся вірним своєму вибору. Для мене довіра й вірність — це не просто слова, а основа будь-яких стосунків.
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
+  </section>
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
+  <!-- ======================================== -->
+  <!-- 09. DREAMS -->
+  <!-- ======================================== -->
 
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
+  <section id="dreams">
 
-                </div>
+    <div class="container split">
 
-            </div>
+      <div class="dream-visual reveal">
 
-        </section>
+        <div class="orbit orbit-one"></div>
+        <div class="orbit orbit-two"></div>
 
+        <div class="dream-heart">
+          ❤️
+        </div>
 
-        <!-- ========================= -->
-        <!-- МОЄ ЖИТТЯ -->
-        <!-- ========================= -->
+      </div>
 
-        <section class="page" id="lifePage">
 
-            <div class="glass">
+      <div class="text-block reveal">
 
-                <span class="hello">💻 Моє життя</span>
+        <span class="eyebrow">
+          мої цілі та мрії
+        </span>
 
-                <h2>
-                    Чим я живу зараз
-                </h2>
+        <h2>
+          Я хочу побудувати життя,
+          в якому добре прокидатися зранку
+        </h2>
 
-                <p class="subtitle">
-                    Зараз багато часу займає робота, розвиток і створення проектиків.
+        <p>
+          Розвиватися.
+          Займатися тим, що подобається.
+          Створювати свої проєкти.
+        </p>
 
-                    Мені подобається момент, коли ідея, яка була тільки в голові, поступово стає реальністю.
+        <p>
+          Бачити нові місця.
+          Мати поруч близьких людей.
+          І створювати багато моментів,
+          які хочеться пам'ятати.
+        </p>
 
-                    Але окрім справ, я хочу мати час на людей, емоції і моменти, які хочеться запам'ятати.
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
+      </div>
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
+    </div>
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
+  </section>
 
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
 
-                </div>
+  <!-- ======================================== -->
+  <!-- 10. SECRET -->
+  <!-- ======================================== -->
 
-            </div>
+  <section id="secret">
 
-        </section>
+    <div class="container">
 
+      <div class="secret-box reveal">
 
-        <!-- ========================= -->
-        <!-- МРІЇ -->
-        <!-- ========================= -->
+        <span class="eyebrow">
+          дещо особисте
+        </span>
 
-        <section class="page" id="dreamsPage">
+        <h2>
+          Але є речі,
+          які неможливо помістити в сайт
+        </h2>
 
-            <div class="glass">
+        <p>
+          Їх можна зрозуміти лише
+          через спілкування,
+          час і моменти,
+          проведені разом.
+        </p>
 
-                <span class="hello">🚀 Мрії</span>
+        <button class="main-button" id="secretButton" type="button">
+          Натисни ❤️
+        </button>
 
-                <h2>
-                    До чого я прагну
-                </h2>
 
-                <p class="subtitle">
-                    Я хочу побудувати життя, в якому буде комфортно прокидатися зранку.
+        <div class="secret-message" id="secretMessage">
 
-                    Розвиватися, займатися тим, що подобається, мати поруч близьких людей і створювати багато теплих
-                    моментів.
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
+          <p>
+            Тому цей сайт —
+            лише маленька частинка мене.
+          </p>
 
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
+          <p>
+            Усе інше я хочу
+            відкривати тобі поступово.
+          </p>
 
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ========================= -->
-        <!-- РАДІСТЬ -->
-        <!-- ========================= -->
-
-        <section class="page" id="joyPage">
-
-            <div class="glass">
-
-                <span class="hello">😊 Радість</span>
-
-                <h2>
-                    Що мене радує?
-                </h2>
-
-                <div class="cards">
-
-                    <div class="card">
-                        ☕
-                        <strong>Затишні вечори</strong>
-                        <small>Час, коли можна відпочити і перезавантажитися.</small>
-                    </div>
-
-                    <div class="card">
-                        🎵
-                        <strong>Хороша музика</strong>
-                        <small>Пісні, які створюють правильний настрій.</small>
-                    </div>
-
-                    <div class="card">
-                        🚗
-                        <strong>Поїздки</strong>
-                        <small>Нові місця та маленькі пригоди.</small>
-                    </div>
-
-                    <div class="card">
-                        💬
-                        <strong>Цікаві розмови</strong>
-                        <small>Моменти, які хочеться продовжувати.</small>
-                    </div>
-
-                </div>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- СМАКИ -->
-        <!-- ========================= -->
-
-        <section class="page" id="tastePage">
-
-            <div class="glass">
-
-                <span class="hello">🎵 Мої смаки</span>
-
-                <h2>
-                    Що мені подобається
-                </h2>
-
-                <p class="subtitle">
-
-                    Люблю атмосферну музику, цікаві фільми, смачну їжу та місця, де можна відпочити.
-                    
-                    Подобається все, що створює особливий настрій: вечірні прогулянки, гарні краєвиди, щирі розмови й маленькі моменти, які потім хочеться згадувати.
-
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- СТИЛЬ ЖИТТЯ -->
-        <!-- ========================= -->
-
-        <section class="page" id="stylePage">
-
-            <div class="glass">
-
-                <span class="hello">🏡 Стиль життя</span>
-
-                <h2>
-                    Як проходять мої дні
-                </h2>
-
-                <p class="subtitle">
-
-                    Люблю порядок, розвиток і баланс.
-                
-                    Для мене важливо не лише досягати цілей, а й знаходити час на відпочинок, нові враження та людей, поруч із якими хочеться бути собою.
-
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- ТУРБОТА -->
-        <!-- ========================= -->
-
-        <section class="page" id="carePage">
-
-            <div class="glass">
-
-                <span class="hello">🤝 Турбота</span>
-
-                <h2>
-                    Як я проявляю увагу
-                </h2>
-
-                <p class="subtitle">
-
-                    Я вважаю, що турбота проявляється у вчинках.
-                
-                    У тому, щоб вислухати, допомогти, бути поруч, коли це потрібно, і не забувати про маленькі речі, які можуть зробити чийсь день кращим.
-
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ========================= -->
-        <!-- 11. СТОСУНКИ -->
-        <!-- ========================= -->
-
-        <section class="page" id="relationshipPage">
-
-            <div class="glass">
-
-                <span class="hello">👫 Стосунки</span>
-
-                <h2>
-                    Які стосунки я хочу
-                </h2>
-
-                <p class="subtitle">
-
-                    Я не шукаю ідеальну людину і не вірю в ідеальні стосунки.
-                
-                    Мені хочеться бути поруч із людиною, з якою можна залишатися собою, говорити чесно, сміятися, підтримувати одне одного і разом переживати різні моменти життя.
-                
-                    Вірю, що найміцніші стосунки не виникають за один день — вони будуються поступово, на довірі, повазі та взаємному бажанні бути поруч.
-
-                </p>
-
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- 12. ДІВЧИНА -->
-        <!-- ========================= -->
-
-        <section class="page" id="girlPage">
-
-            <div class="glass">
-
-                <span class="hello">🌹 Дівчина</span>
-
-                <h2>
-                    Що мені подобається в дівчині
-                </h2>
-
-                <p class="subtitle">
-
-                    Зовнішність може привернути увагу, але залишаюся я зовсім не через неї.
-                
-                    Мене захоплюють щирість, характер, почуття гумору, внутрішня сила, доброта і людина, поруч з якою можна бути собою.
-                
-                    Найбільше ціную ту, з ким хочеться не лише проводити час, а й створювати спільні спогади.
-
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- 13. МОМЕНТИ -->
-        <!-- ========================= -->
-
-
-        <section class="page" id="momentsPage">
-
-            <div class="glass">
-
-                <span class="hello">📸 Моменти</span>
-
-                <h2>
-                    Частинка життя
-                </h2>
-                
-                <p class="subtitle">
-
-                    Тут могли б бути фотографії
-                    та моменти, які хочеться зберегти.
-
-                    Подорожі, маленькі пригоди,
-                    смішні історії та особливі спогади —
-                    саме з таких моментів складається життя.
-
-                    Можливо, колись тут з'являться нові історії, які ми створимо разом ❤️
-
-                </p>
-
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ========================= -->
-        <!-- 14. ОСОБИСТЕ -->
-        <!-- ========================= -->
-
-        <section class="page" id="secretPage">
-
-            <div class="glass">
-
-                <span class="hello">🔐 Особисте</span>
-
-                <h2>
-                    Шлях, який потрібно пройти
-                </h2>
-
-                <p class="subtitle">
-
-                    Є речі, які неможливо описати
-                    кількома реченнями.
-                
-                    Їх можна зрозуміти лише
-                    через спілкування, час
-                    і моменти, проведені разом.
-                
-                    Цей сайт — лише невелика частинка мене.
-                
-                    Усе інше можна відкрити
-                    тільки поступово.
-
-                </p>
-                <div class="random-fact">
-                    <span class="fact-title">🎲 Випадковий факт</span>
-                    <p class="fact-text"></p>
-                </div>
-                <div class="page-navigation">
-
-                    <button class="nav-btn nav-prev">
-                        ← Назад
-                    </button>
-
-                    <button class="nav-btn nav-menu">
-                        ☰ В меню
-                        <small class="sectionProgress">
-                            0 із 14
-                        </small>
-                    </button>
-
-                    <button class="nav-btn nav-next">
-                        Вперед →
-                    </button>
-
-                </div>
-
-            </div>
-
-        </section>
-
-        <!-- ========================= -->
-        <!-- ЛИСТ -->
-        <!-- ========================= -->
-
-        <section class="page" id="letterPage">
-
-            <div class="glass letter">
-
-                <span class="hello">
-                    💌 Особистий лист
-                </span>
-
-                <h2>
-                    Якщо ти дійшла сюди...
-                </h2>
-
-                <div id="letterCountdown" class="letter-countdown"></div>
-
-                <!-- Тут буде друкуватися текст -->
-                <div id="letterText" class="letter-text"></div>
-
-                <!-- Тут він просто зберігається -->
-                <div id="letterSource" style="display:none;">
-
-                    <p>
-                        Дякую, що ти витратила свій час і пройшла цей маленький шлях зі мною.
-                    </p>
-
-                    <p>
-                        Мені хотілося зробити щось більше, ніж просто написати кілька повідомлень.
-                        Хотілося показати тобі частинку себе так, як я це відчуваю.
-                    </p>
-
-                    <p>
-                        Я не знаю, куди нас приведе наше спілкування,
-                        але мені приємно, що ти з'явилася в моєму житті.
-                    </p>
-
-                    <p>
-                        Мені подобається дізнаватися тебе,
-                        твої думки, характер і те, що робить тебе саме тобою ❤️
-                    </p>
-
-                </div>
-
-                <div id="finalScene" class="final-scene hidden">
-
-                    <div class="floating-words">
-
-                        <span style="--x:-220px;--y:-150px;--d:0s;">щирість</span>
-                        <span style="--x:200px;--y:-130px;--d:1s;">усмішка</span>
-                        <span style="--x:-260px;--y:20px;--d:2s;">голубі очі</span>
-                        <span style="--x:150px;--y:40px;--d:1.5s;">турбота</span>
-                        <span style="--x:-170px;--y:180px;--d:3s;">тепло</span>
-                        <span style="--x:170px;--y:180px;--d:2.5s;">доброта</span>
-                        <span style="--x:0px;--y:-210px;--d:.5s;">спокій</span>
-                        <span style="--x:0px;--y:220px;--d:2s;">посмішка</span>
-                        <span style="--x:300px;--y:-20px;--d:3.5s;">відданість</span>
-
-                    </div>
-
-                    <div class="final-text">
-                    
-                        <p>Я не знаю, що чекає нас далі.</p>
-                    
-                        <p>
-                            Але точно знаю,
-                            що не шкодую про те повідомлення,
-                            яке привело мене сюди.
-                        </p>
-                    
-                        <p>
-                            Дякую,
-                            що дала мені можливість
-                            показати тобі трохи більше себе.
-                        </p>
-                    
-                        <p>
-                            А далі...
-                            нехай усе відбувається так, як має бути. ❤️
-                        </p>
-                    
-                    </div>
-
-                </div>
-
-                <div id="finalHeart" class="final-heart">
-                    <span>❤️</span>
-                </div>
-
-                <div id="endingText" class="ending-text hidden">
-
-                    <p id="endingLine1">
-                        Можливо...
-                    </p>
-
-                    <p id="endingLine2">
-                        це лише початок.
-                    </p>
-
-                    <button id="restartStory" class="restart-button">
-                        ❤️ Переглянути історію ще раз
-                    </button>
-
-                </div>
-
-                <button id="finishButton" class="hidden">
-                    Продовжити
-                </button>
-
-                <div id="finalMessage">
-
-                    Дякую, що дозволила мені
-                    показати тобі частинку себе ❤️
-
-                </div>
-
-                <button id="poemButton">
-                    Прочитати кінець 
-                </button>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <div class="secret-overlay" id="secretOverlay">
-
-        <div class="secret-window">
-
-            <div id="envelopeScene" class="envelope-scene">
-
-                <div class="envelope" id="envelope">
-
-                    <div class="envelope-back"></div>
-
-                    <div class="paper" id="paper">
-                        <span>❤️</span>
-                    </div>
-
-                    <div class="envelope-front"></div>
-
-                    <div class="envelope-flap" id="flap"></div>
-
-                </div>
-
-            </div>
-
-            <div id="heartReveal">
-
-                ❤️
-
-                <span>
-                    Ти дійшла до кінця
-                </span>
-
-            </div>
-
-            <p>
-                Є ще дещо, що мені хотілося б сказати особисто.
-            </p>
-
-            <button id="openLetter">
-                Відкрити лист 💌
-            </button>
+          <p class="secret-love">
+            Якщо ти сама цього захочеш ❤️
+          </p>
 
         </div>
 
-    </div>
-
-    <div id="startModal" class="start-modal">
-
-        <div class="start-window">
-
-            <h2>Почати побачення? ❤️</h2>
-
-            <p>
-                Я підготував для тебе маленьку історію.
-                Сподіваюся, вона тобі сподобається 😊
-            </p>
-
-            <div class="start-buttons">
-
-                <button id="acceptDate">
-                    Погодитись
-                </button>
-            </div>
-
-        </div>
+      </div>
 
     </div>
 
-    <div id="toast" class="toast">
-        😄 Ця кнопка ще в розробці.
-    </div>
+  </section>
 
-    <div id="poemModal" class="poem-modal">
 
-        <div class="poem-window">
+  <!-- ======================================== -->
+  <!-- 11. MINI QUESTION -->
+  <!-- ======================================== -->
 
-            <h2>
-                ❤️ До Аліни ❤️
-            </h2>
+  <section id="choice">
 
-            <p>
-                Іноді люди з'являються
-                зовсім випадково,
-                але залишають після себе
-                щось особливе.
-            </p>
-            
-            <p>
-                Зараз між нами кілометри,
-                різні міста, робота
-                й повсякденні справи.
-                Але навіть попри це
-                мені хочеться
-                дізнаватися тебе
-                все більше.
-            </p>
-            
-            <p>
-                Мені подобаються
-                твої голубі очі.
-                У них є щось особливе —
-                ніби маленький
-                шматочок неба,
-                який щоразу
-                змушує усміхнутися.
-            </p>
-            
-            <p>
-                Я розумію,
-                що справжня довіра
-                не виникає
-                за один день.
-                Її неможливо прискорити —
-                вона з'являється
-                поступово,
-                коли двоє людей
-                відкриваються
-                одне одному.
-            </p>
-            
-            <p>
-                Саме тому
-                мені не хочеться поспішати.
-                Хочу просто
-                бути щирим,
-                залишатися собою
-                і потроху
-                відкриватися тобі.
-            </p>
-            
-            <p>
-                Не знаю,
-                куди приведе
-                нас ця історія.
-                Але мені
-                дуже хочеться,
-                щоб вона
-                мала продовження. ❤️
-            </p>
+    <div class="container choice-content reveal">
 
-            <button id="closePoem">
-                Закрити
-            </button>
+      <span class="eyebrow">
+        тепер твоя черга
+      </span>
 
-        </div>
+      <h2>
+        Що з цього тобі ближче?
+      </h2>
+
+      <p>
+        Обирай 😊
+      </p>
+
+
+      <div class="choice-buttons">
+
+        <button class="choice-button" data-choice="coffee" type="button">
+          ☕ Кава удвох
+        </button>
+
+        <button class="choice-button" data-choice="walk" type="button">
+          🌃 Вечірня прогулянка
+        </button>
+
+        <button class="choice-button" data-choice="home" type="button">
+          🎬 Затишний вечір
+        </button>
+
+      </div>
+
+
+      <div id="choiceResult" class="choice-result"></div>
 
     </div>
 
+  </section>
 
-    <script src="script.js"></script>
 
+  <!-- ======================================== -->
+  <!-- 12. FINAL -->
+  <!-- ======================================== -->
+
+  <section id="final" class="final-section">
+
+    <div class="container final-content reveal">
+
+      <div class="final-heart">
+        ❤️
+      </div>
+
+      <span class="eyebrow">
+        і наостанок
+      </span>
+
+      <h2>
+        Дякую, що дійшла сюди
+      </h2>
+
+      <p>
+        Мені хотілося зробити щось більше,
+        ніж просто написати кілька повідомлень.
+      </p>
+
+      <p>
+        Хотілося показати тобі
+        маленьку частинку себе
+        саме так, як я це відчуваю.
+      </p>
+
+      <p>
+        І мені подобається думка,
+        що це лише одна сторінка
+        набагато більшої історії.
+      </p>
+
+
+      <button class="main-button" id="finalButton" type="button">
+        І ще одне... ❤️
+      </button>
+
+
+      <div class="final-message" id="finalMessage">
+
+        <p>
+          Мені справді дуже подобається
+          дізнаватися тебе.
+        </p>
+
+        <strong>
+          І я хочу продовжувати ❤️
+        </strong>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <script src="script.js"></script>
 
 </body>
 
-</html
+</html>
